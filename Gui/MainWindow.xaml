@@ -34,6 +34,7 @@
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,0,0,0">
             <Button x:Name="AddButton" Content="Додати" Width="100" Click="AddButton_Click" />
             <Button x:Name="DeleteButton" Content="Видалити" Width="100" Margin="0,10,0,0" Click="DeleteButton_Click" />
+            <Button x:Name="SeedButton" Content="Заповнити за умовою" Width="100" Margin="0,10,0,0" Click="SeedButton_Click" />
         </StackPanel>
 
         <GroupBox Header="Редагування" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0">
@@ -80,11 +81,9 @@
         <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Margin="0,10,0,0" Orientation="Horizontal">
             <Button x:Name="SaveButton" Content="Зберегти" Width="100" Click="SaveButton_Click" />
             <Button x:Name="CancelButton" Content="Скасувати" Width="100" Margin="10,0,0,0" Click="CancelButton_Click" />
+            <Button x:Name="SolveButton" Content="Розв'язати" Width="150" Margin="10,0,0,0" Click="SolveButton_Click" />
         </StackPanel>
 
-        <Button x:Name="SolveButton" Grid.Row="4" Grid.ColumnSpan="2" Content="Розв'язати" Width="150"
-                Margin="0,10,0,0" HorizontalAlignment="Left" Click="SolveButton_Click" />
-
-        <TextBlock x:Name="ResultsTextBlock" Grid.Row="5" Grid.ColumnSpan="2" Margin="0,10,0,0" TextWrapping="Wrap" />
+        <!-- <Button x:Name="SeedButton" Content="Заповнити за умовою" Width="100" Margin="0,10,0,0" Click="SeedButton_Click" /> -->
     </Grid>
 </Window>

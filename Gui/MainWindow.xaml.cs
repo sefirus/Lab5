@@ -97,11 +97,16 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     }
 
     private void SolveButton_Click(object sender, RoutedEventArgs e)
-    {
-        // Тут викликається ваш алгоритм розв'язання задачі з введеними даними.
-        // Як результат, ви встановлюєте текст для ResultsTextBlock.
-        // Наприклад:
-        ResultsTextBlock.Text = "Тут буде результат розв'язання задачі.";
+    { 
+        var matches = new MatchingStrategy()
+            .SetSurnames(Persons.Where(p => p.Type == NameType.Surname))
+            .SetProfessions(Persons.Where(p => p.Type == NameType.Profession))
+            .GetMatches()
+            .ToList();
+
+        var resultsWindow = new ResultsWindow(matches);
+        resultsWindow.ShowDialog();
+        
     }
 
     private void PersonListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -117,6 +122,14 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         HasSistersCheckBox.IsChecked = SelectedPerson.HasSisters;
         AgeTextBox.Text = SelectedPerson.Age.ToString();
         OlderThanComboBox.SelectedValue = SelectedPerson.OlderThan;
+    }
+
+    private void SeedButton_Click(object sender, RoutedEventArgs e)
+    {
+        foreach (var person in Seed.GetDefaults())
+        {
+            Persons.Add(person);
+        }
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
