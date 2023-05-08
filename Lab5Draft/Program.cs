@@ -1,4 +1,4 @@
-﻿using Lab5Draft;
+﻿using Solver;
 
 var locksmith = new Person()
 {
@@ -40,7 +40,9 @@ var ivanov = new Person()
     Type = NameType.Surname
 };
 
-new Solver(new []{borusenko, ivanov, semkiv}, new []{locksmith, turner, welder})
+new MatchingStrategy()
+    .SetSurnames(new []{borusenko, ivanov, semkiv})
+    .SetProfessions(new []{locksmith, turner, welder})
     .GetMatches()
     .ToList()
     .ForEach(Console.WriteLine);

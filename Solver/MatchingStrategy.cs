@@ -1,15 +1,22 @@
-﻿namespace Lab5Draft;
+﻿namespace Solver;
 
-public class Solver
+public class MatchingStrategy : ISolutionStrategy
 {
-    public List<Person> Surnames { get; set; }
-    public List<Person> Professions { get; set; }
-
-    public Solver(IEnumerable<Person> surnames, IEnumerable<Person> professions)
+    private List<Person> Surnames { get; set; }
+    private List<Person> Professions { get; set; }
+    
+    public ISolutionStrategy SetSurnames(IEnumerable<Person> surnames)
     {
         Surnames = surnames.Where(p => p.Type == NameType.Surname).ToList();
-        Professions = professions.Where(p => p.Type == NameType.Profession).ToList();
+        return this;
     }
+
+    public ISolutionStrategy SetProfessions(IEnumerable<Person> professions)
+    {
+        Professions = professions.Where(p => p.Type == NameType.Profession).ToList();
+        return this;
+    }
+    
 
     private List<Person> SortByProperties(IEnumerable<Person> source)
     {
@@ -50,7 +57,7 @@ public class Solver
 
     public ISet<Match> GetMatches(int maxIterations = 100)
     {
-        if (Surnames.Count != Professions.Count)
+        if (Surnames is null || Professions is null || Surnames.Count != Professions.Count)
         {
             throw new InvalidOperationException("Lists must be equal length");
         }

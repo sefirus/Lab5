@@ -1,4 +1,4 @@
-﻿namespace Lab5Draft;
+﻿namespace Solver;
 
 public enum NameType
 {
