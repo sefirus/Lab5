@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-namespace Solver;
+﻿namespace Solver;
 
 using System.ComponentModel;
 

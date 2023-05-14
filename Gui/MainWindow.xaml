@@ -26,7 +26,7 @@
                     <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" Width="150" />
                     <GridViewColumn Header="HasSisters" DisplayMemberBinding="{Binding HasSisters}" Width="100" />
                     <GridViewColumn Header="Age" DisplayMemberBinding="{Binding Age}" Width="50" />
-                    <GridViewColumn Header="Older Than" DisplayMemberBinding="{Binding OlderThanTitle}" Width="150" />
+                    <GridViewColumn Header="Older Than" DisplayMemberBinding="{Binding OlderThan.Title}" Width="150" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -63,8 +63,8 @@
                 </ComboBox>
 
                 <Label Grid.Row="2" Grid.Column="0" Content="HasSisters:" />
-                <CheckBox x:Name="HasSistersCheckBox" Grid.Row="2" Grid.Column="1" Margin="5,0,0,0"
-                          IsChecked="{Binding SelectedPerson.HasSisters}" />
+                <CheckBox x:Name="HasSistersCheckBox" IsThreeState="True" Grid.Row="2" Grid.Column="1" 
+                          Margin="5,0,0,0" IsChecked="{Binding SelectedPerson.HasSisters}" />
 
                 <Label Grid.Row="3" Grid.Column="0" Content="Age:" />
                 <TextBox x:Name="AgeTextBox" Grid.Row="3" Grid.Column="1" Margin="5,0,0,0"
@@ -73,7 +73,7 @@
                 <Label Grid.Row="4" Grid.Column="0" Content="Older Than:" />
                 <ComboBox x:Name="OlderThanComboBox" Grid.Row="4" Grid.Column="1" Margin="5,0,0,0"
                           ItemsSource="{Binding Persons}" DisplayMemberPath="Title"
-                          SelectedValue="{Binding SelectedPerson.OlderThan}" SelectedValuePath="SelectedItem" />
+                          SelectedValue="{Binding OlderThan}" SelectedValuePath="SelectedPerson" />
 
             </Grid>
         </GroupBox>

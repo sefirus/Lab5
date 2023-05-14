@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Solver;
 
 namespace Gui;
@@ -78,9 +67,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         int.TryParse(AgeTextBox.Text, out int age);
         SelectedPerson.Title = TitleTextBox.Text;
         SelectedPerson.Type = (NameType)TypeComboBox.SelectedValue;
-        SelectedPerson.HasSisters = HasSistersCheckBox.IsChecked ?? false;
+        SelectedPerson.HasSisters = HasSistersCheckBox.IsChecked;
         SelectedPerson.Age = age;
-        SelectedPerson.OlderThan = OlderThanComboBox.SelectedValue as Person;
+        SelectedPerson.OlderThan = OlderThanComboBox.SelectionBoxItem as Person;
     }
 
     private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -121,7 +110,14 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         TypeComboBox.SelectedValue = SelectedPerson.Type;
         HasSistersCheckBox.IsChecked = SelectedPerson.HasSisters;
         AgeTextBox.Text = SelectedPerson.Age.ToString();
-        OlderThanComboBox.SelectedValue = SelectedPerson.OlderThan;
+        if (SelectedPerson.OlderThan != null)
+        {
+            OlderThanComboBox.SelectedItem = SelectedPerson.OlderThan;
+        }
+        else
+        {
+            OlderThanComboBox.SelectedItem = null;
+        }
     }
 
     private void SeedButton_Click(object sender, RoutedEventArgs e)
